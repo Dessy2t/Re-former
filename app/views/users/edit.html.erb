@@ -1,4 +1,12 @@
-    <%= form_with model: @user, method: :post do |form| %>
+    # I have removed the HTTP method in the form. form_with auto-detects whether it is a POST or PATCH request!
+
+    <%= form_with model: @user do |form| %>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        
         <%= form.label :username, "Your username here!" %>
         <%= form.text_field :username, default: "Prepopulated Value", size: 20 %><br />
         <%= form.label :email %>
